@@ -1,0 +1,1881 @@
+/* =========================================================
+   PKKMB TEKNIK MESIN 2026
+   INDUSTRIAL EDITORIAL UI
+   ========================================================= */
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #081b2b;
+}
+
+body {
+  margin: 0;
+
+  min-width: 320px;
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  background: #081b2b;
+  color: #f0eadb;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* =========================
+   COLOR SYSTEM
+========================= */
+
+:root {
+  --ink: #061522;
+
+  --navy: #081b2b;
+
+  --navy-2: #0d273d;
+
+  --paper: #f0eadb;
+
+  --paper-dim: #b9b3a6;
+
+  --orange: #ef4a1a;
+
+  --orange-dark: #bd3410;
+
+  --black: #030b11;
+
+  --line:
+    rgba(
+      240,
+      234,
+      219,
+      0.22
+    );
+
+  --line-soft:
+    rgba(
+      240,
+      234,
+      219,
+      0.10
+    );
+}
+
+
+/* =========================
+   PAGE SHELL
+========================= */
+
+.site-shell {
+  position: relative;
+
+  width: min(
+    1480px,
+    100%
+  );
+
+  margin: 0 auto;
+
+  border-left:
+    1px solid
+    var(--line-soft);
+
+  border-right:
+    1px solid
+    var(--line-soft);
+}
+
+
+/* subtle engineering grid */
+
+.site-shell::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: -1;
+
+  pointer-events: none;
+
+  opacity: 0.14;
+
+  background-image:
+
+    linear-gradient(
+      rgba(
+        240,
+        234,
+        219,
+        0.12
+      )
+      1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(
+        240,
+        234,
+        219,
+        0.12
+      )
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    40px 40px;
+}
+
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar {
+  min-height: 78px;
+
+  padding:
+    14px
+    clamp(
+      18px,
+      3vw,
+      44px
+    );
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap: 30px;
+
+  border-bottom:
+    1px solid
+    var(--line);
+
+  background:
+    var(--navy);
+}
+
+
+/* BRAND */
+
+.brand-lockup {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.brand-mark {
+  min-width: 50px;
+
+  min-height: 50px;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    2px solid
+    var(--paper);
+
+  font-family:
+    "Arial Black",
+    Arial,
+    sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 900;
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+.brand-lockup div {
+  display: grid;
+
+  gap: 3px;
+}
+
+
+.brand-lockup strong {
+  font-size: 11px;
+
+  letter-spacing:
+    0.11em;
+}
+
+
+.brand-lockup small {
+  color:
+    var(--paper-dim);
+
+  font-size: 8px;
+
+  letter-spacing:
+    0.11em;
+}
+
+
+/* topbar right */
+
+.topbar-meta {
+  display: flex;
+
+  gap: 28px;
+
+  color:
+    var(--paper-dim);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing:
+    0.11em;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.intro {
+  min-height: 470px;
+
+  padding:
+
+    clamp(
+      48px,
+      7vw,
+      92px
+    )
+
+    clamp(
+      18px,
+      5vw,
+      76px
+    )
+
+    44px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  align-items: end;
+
+  gap: 30px;
+
+  border-bottom:
+    1px solid
+    var(--line);
+
+  background:
+    var(--navy);
+}
+
+
+.intro-copy {
+  max-width: 1020px;
+}
+
+
+/* small label */
+
+.section-code {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  color:
+    var(--orange);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+}
+
+
+/* BIG TITLE */
+
+.intro h1 {
+  margin: 0;
+
+  color:
+    var(--paper);
+
+  font-family:
+    Impact,
+    Haettenschweiler,
+    "Arial Narrow Bold",
+    "Arial Black",
+    sans-serif;
+
+  font-size:
+
+    clamp(
+      66px,
+      11.2vw,
+      162px
+    );
+
+  font-weight: 900;
+
+  line-height: 0.75;
+
+  letter-spacing:
+    -0.045em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.intro h1 span {
+  color:
+    var(--orange);
+}
+
+
+.intro p {
+  max-width: 650px;
+
+  margin:
+    34px
+    0
+    0;
+
+  color:
+    var(--paper-dim);
+
+  font-size:
+
+    clamp(
+      13px,
+      1.2vw,
+      16px
+    );
+
+  line-height: 1.65;
+}
+
+
+/* HERO SIDE INFO */
+
+.intro-note {
+  width: 94px;
+
+  display: grid;
+
+  align-self: stretch;
+
+  border-left:
+    1px solid
+    var(--line);
+}
+
+
+.intro-note span {
+  min-height: 86px;
+
+  padding:
+    12px
+    8px;
+
+  display: flex;
+
+  align-items:
+    flex-end;
+
+  justify-content:
+    flex-end;
+
+  border-bottom:
+    1px solid
+    var(--line);
+
+  color:
+    var(--paper-dim);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  writing-mode:
+    vertical-rl;
+
+  transform:
+    rotate(180deg);
+}
+
+
+/* =========================
+   WORKSPACE
+========================= */
+
+.workspace {
+  border-bottom:
+    1px solid
+    var(--line);
+}
+
+
+/* =========================
+   STEPS
+========================= */
+
+.step-rail {
+  min-height: 62px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      1fr
+    );
+
+  border-bottom:
+    1px solid
+    var(--line);
+}
+
+
+.step {
+  padding:
+
+    15px
+
+    clamp(
+      16px,
+      2.6vw,
+      38px
+    );
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  border-right:
+    1px solid
+    var(--line);
+
+  color:
+    var(--paper-dim);
+}
+
+
+.step:last-child {
+  border-right: 0;
+}
+
+
+.step span {
+  color:
+    var(--orange);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+}
+
+
+.step strong {
+  font-size: 10px;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+/* =========================
+   EDITOR GRID
+========================= */
+
+.editor-grid {
+  display: grid;
+
+  grid-template-columns:
+
+    minmax(
+      0,
+      1.58fr
+    )
+
+    minmax(
+      330px,
+      0.72fr
+    );
+}
+
+
+.preview-panel,
+.control-panel {
+  min-width: 0;
+}
+
+
+/* =========================
+   PREVIEW PANEL
+========================= */
+
+.preview-panel {
+  padding:
+
+    clamp(
+      18px,
+      3vw,
+      42px
+    );
+
+  border-right:
+    1px solid
+    var(--line);
+}
+
+
+/* PANEL HEADER */
+
+.panel-head {
+  min-height: 70px;
+
+  display: flex;
+
+  align-items:
+    flex-start;
+
+  justify-content:
+    space-between;
+
+  gap: 20px;
+}
+
+
+.panel-head .section-code {
+  margin-bottom: 6px;
+}
+
+
+.panel-head h2 {
+  margin: 0;
+
+  font-family:
+    Impact,
+    Haettenschweiler,
+    "Arial Narrow Bold",
+    "Arial Black",
+    sans-serif;
+
+  font-size:
+
+    clamp(
+      34px,
+      4vw,
+      54px
+    );
+
+  line-height: 0.85;
+
+  letter-spacing:
+    -0.03em;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* LOCAL INDICATOR */
+
+.status-dot {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color:
+    var(--paper-dim);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+}
+
+
+.status-dot i {
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background:
+    var(--orange);
+}
+
+
+/* =========================
+   CANVAS
+========================= */
+
+.canvas-shell {
+  position: relative;
+
+  width:
+    min(
+      100%,
+      760px
+    );
+
+  margin:
+    12px
+    auto
+    0;
+
+  aspect-ratio:
+    4 / 5;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--paper);
+
+  background:
+    #102235;
+
+  touch-action: none;
+
+  user-select: none;
+}
+
+
+/* drag file hover */
+
+.canvas-shell.drag-over {
+  outline:
+    5px solid
+    var(--orange);
+
+  outline-offset:
+    -5px;
+}
+
+
+/* CANVAS */
+
+canvas {
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  cursor: grab;
+}
+
+
+canvas.dragging {
+  cursor: grabbing;
+}
+
+
+/* EMPTY STATE */
+
+.empty-state {
+  position: absolute;
+
+  inset: 0;
+
+  display: grid;
+
+  place-content: center;
+
+  justify-items: center;
+
+  gap: 7px;
+
+  text-align: center;
+
+  pointer-events: none;
+}
+
+
+.empty-index {
+  color:
+    var(--orange);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 12px;
+}
+
+
+.empty-state strong {
+  font-family:
+    "Arial Black",
+    Arial,
+    sans-serif;
+
+  font-size:
+
+    clamp(
+      18px,
+      3vw,
+      32px
+    );
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+.empty-state > span:last-child {
+  color:
+    var(--paper-dim);
+
+  font-size: 11px;
+}
+
+
+/* CANVAS FOOTER */
+
+.canvas-foot {
+  margin-top: 11px;
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  gap: 14px;
+
+  color:
+    var(--paper-dim);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+}
+
+
+/* =========================
+   CONTROL PANEL
+========================= */
+
+.control-panel {
+  padding:
+
+    clamp(
+      18px,
+      3vw,
+      36px
+    );
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+  background:
+    var(--ink);
+}
+
+
+/* =========================
+   FILE BUTTON
+========================= */
+
+.file-button {
+  min-height: 92px;
+
+  padding:
+    14px
+    17px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  border:
+    1px solid
+    var(--paper);
+
+  cursor: pointer;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--ink);
+
+  transition:
+
+    background
+    140ms ease,
+
+    color
+    140ms ease;
+}
+
+
+.file-button:hover {
+  background:
+    var(--orange);
+
+  color:
+    #ffffff;
+}
+
+
+.file-button-index {
+  width: 44px;
+
+  height: 44px;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    1px solid
+    currentColor;
+
+  font-size: 26px;
+
+  line-height: 1;
+}
+
+
+.file-button > span:last-of-type {
+  display: grid;
+
+  gap: 5px;
+}
+
+
+.file-button strong {
+  font-size: 13px;
+
+  letter-spacing:
+    0.06em;
+}
+
+
+.file-button small {
+  opacity: 0.6;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+}
+
+
+/* =========================
+   CONTROL BLOCK
+========================= */
+
+.control-block {
+  padding:
+    18px
+    0;
+
+  border-top:
+    1px solid
+    var(--line);
+
+  border-bottom:
+    1px solid
+    var(--line);
+}
+
+
+.control-block.compact {
+  display: grid;
+
+  gap: 11px;
+}
+
+
+/* CONTROL LABEL */
+
+.control-label {
+  margin-bottom: 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+}
+
+
+.control-label output {
+  color:
+    var(--orange);
+}
+
+
+.control-title {
+  color:
+    var(--paper-dim);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+}
+
+
+/* =========================
+   RANGE
+========================= */
+
+input[type="range"] {
+  width: 100%;
+
+  accent-color:
+    var(--orange);
+}
+
+
+input[type="range"]:disabled {
+  opacity: 0.3;
+}
+
+
+/* =========================
+   BUTTON SYSTEM
+========================= */
+
+.action {
+  min-height: 50px;
+
+  padding:
+    0
+    17px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap: 16px;
+
+  border: 0;
+
+  border-radius: 0;
+
+  cursor: pointer;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.08em;
+
+  transition:
+
+    transform
+    120ms ease,
+
+    background
+    120ms ease,
+
+    color
+    120ms ease,
+
+    border-color
+    120ms ease;
+}
+
+
+.action:hover:not(:disabled) {
+  transform:
+    translateY(-2px);
+}
+
+
+.action:disabled {
+  opacity: 0.28;
+
+  cursor: not-allowed;
+}
+
+
+/* SECONDARY */
+
+.action.secondary {
+  border:
+    1px solid
+    var(--line);
+
+  background:
+    transparent;
+}
+
+
+.action.secondary:hover:not(:disabled) {
+  border-color:
+    var(--paper);
+}
+
+
+/* =========================
+   EXPORT
+========================= */
+
+.export-block {
+  margin-top: auto;
+
+  padding-top: 20px;
+
+  display: grid;
+
+  gap: 15px;
+
+  border-top:
+    1px solid
+    var(--line);
+}
+
+
+.export-block > div {
+  display: grid;
+}
+
+
+.export-block .section-code {
+  margin-bottom: 3px;
+}
+
+
+.export-block strong {
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+
+  letter-spacing:
+    0.07em;
+}
+
+
+/* PRIMARY BUTTON */
+
+.action.primary {
+  min-height: 64px;
+
+  background:
+    var(--orange);
+
+  color:
+    #ffffff;
+
+  font-size: 12px;
+}
+
+
+.action.primary:hover:not(:disabled) {
+  background:
+    var(--orange-dark);
+}
+
+
+/* PRIVACY TEXT */
+
+.privacy-note {
+  margin: 0;
+
+  color:
+    #7e8c98;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  line-height: 1.55;
+}
+
+
+/* =========================
+   CAPTION SECTION
+========================= */
+
+.caption-section {
+  display: grid;
+
+  grid-template-columns:
+
+    minmax(
+      260px,
+      0.55fr
+    )
+
+    minmax(
+      0,
+      1.45fr
+    );
+
+  border-bottom:
+    1px solid
+    var(--line);
+}
+
+
+/* CAPTION TITLE */
+
+.caption-title {
+  padding:
+
+    clamp(
+      34px,
+      5vw,
+      72px
+    )
+
+    clamp(
+      18px,
+      4vw,
+      58px
+    );
+
+  border-right:
+    1px solid
+    var(--line);
+
+  background:
+    var(--orange);
+
+  color:
+    #ffffff;
+}
+
+
+.caption-title .section-code {
+  color:
+    #ffffff;
+
+  opacity: 0.72;
+}
+
+
+.caption-title h2 {
+  margin: 0;
+
+  font-family:
+    Impact,
+    Haettenschweiler,
+    "Arial Narrow Bold",
+    "Arial Black",
+    sans-serif;
+
+  font-size:
+
+    clamp(
+      56px,
+      8vw,
+      105px
+    );
+
+  font-weight: 900;
+
+  line-height: 0.76;
+
+  letter-spacing:
+    -0.04em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.caption-title p {
+  max-width: 320px;
+
+  margin:
+    28px
+    0
+    0;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   CAPTION EDITOR
+========================= */
+
+.caption-editor {
+  padding:
+
+    clamp(
+      28px,
+      4vw,
+      58px
+    );
+
+  display: grid;
+
+  gap: 20px;
+
+  background:
+    var(--paper);
+
+  color:
+    var(--ink);
+}
+
+
+/* INPUT GRID */
+
+.identity-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap: 14px;
+}
+
+
+.identity-grid label,
+.caption-field {
+  display: grid;
+
+  gap: 8px;
+}
+
+
+.identity-grid label > span,
+.caption-field > span {
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+}
+
+
+/* INPUT */
+
+.identity-grid input,
+.caption-field textarea {
+  width: 100%;
+
+  border:
+    1px solid
+    rgba(
+      6,
+      21,
+      34,
+      0.28
+    );
+
+  border-radius: 0;
+
+  outline: none;
+
+  background:
+    transparent;
+
+  color:
+    var(--ink);
+}
+
+
+.identity-grid input {
+  min-height: 49px;
+
+  padding:
+    0
+    13px;
+}
+
+
+.identity-grid input::placeholder {
+  color:
+    rgba(
+      6,
+      21,
+      34,
+      0.42
+    );
+}
+
+
+/* TEXTAREA */
+
+.caption-field textarea {
+  min-height: 330px;
+
+  padding: 16px;
+
+  resize: vertical;
+
+  font-size: 13px;
+
+  line-height: 1.62;
+}
+
+
+.identity-grid input:focus,
+.caption-field textarea:focus {
+  border-color:
+    var(--orange);
+}
+
+
+/* =========================
+   CAPTION ACTIONS
+========================= */
+
+.caption-actions {
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap: 18px;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing:
+    0.11em;
+}
+
+
+#captionStatus {
+  color:
+    rgba(
+      6,
+      21,
+      34,
+      0.55
+    );
+}
+
+
+/* COPY BUTTON */
+
+.action.copy {
+  min-width: 190px;
+
+  border:
+    1px solid
+    var(--ink);
+
+  background:
+    var(--ink);
+
+  color:
+    var(--paper);
+}
+
+
+.action.copy:hover {
+  background:
+    var(--orange);
+
+  border-color:
+    var(--orange);
+
+  color:
+    #ffffff;
+}
+
+
+.action.copy.copied {
+  background:
+    var(--orange);
+
+  border-color:
+    var(--orange);
+
+  color:
+    #ffffff;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  min-height: 92px;
+
+  padding:
+
+    20px
+
+    clamp(
+      18px,
+      3vw,
+      44px
+    );
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap: 20px;
+
+  color:
+    var(--paper-dim);
+
+  background:
+    var(--black);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing:
+    0.11em;
+}
+
+
+footer > div {
+  display: grid;
+
+  gap: 6px;
+}
+
+
+footer strong {
+  color:
+    var(--paper);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (
+  max-width: 980px
+) {
+
+  .editor-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .preview-panel {
+    border-right: 0;
+
+    border-bottom:
+      1px solid
+      var(--line);
+  }
+
+
+  .control-panel {
+    min-height: auto;
+  }
+
+
+  .export-block {
+    margin-top: 8px;
+  }
+
+
+  .caption-section {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .caption-title {
+    border-right: 0;
+
+    border-bottom:
+      1px solid
+      rgba(
+        6,
+        21,
+        34,
+        0.18
+      );
+  }
+
+
+  .caption-title h2 {
+    font-size:
+
+      clamp(
+        54px,
+        14vw,
+        98px
+      );
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (
+  max-width: 680px
+) {
+
+  .topbar {
+    min-height: 68px;
+
+    padding:
+      10px
+      13px;
+  }
+
+
+  .brand-mark {
+    min-width: 44px;
+
+    min-height: 44px;
+  }
+
+
+  .brand-lockup strong {
+    font-size: 9px;
+  }
+
+
+  .brand-lockup small {
+    font-size: 7px;
+  }
+
+
+  .topbar-meta {
+    display: none;
+  }
+
+
+  /* HERO */
+
+  .intro {
+    min-height: 390px;
+
+    padding:
+
+      48px
+
+      14px
+
+      28px;
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .intro h1 {
+    font-size:
+
+      clamp(
+        61px,
+        20vw,
+        96px
+      );
+
+    line-height: 0.78;
+  }
+
+
+  .intro p {
+    margin-top: 25px;
+  }
+
+
+  .intro-note {
+    display: none;
+  }
+
+
+  /* STEPS */
+
+  .step {
+    padding:
+      13px
+      10px;
+
+    gap: 7px;
+  }
+
+
+  .step strong {
+    font-size: 8px;
+  }
+
+
+  /* EDITOR */
+
+  .preview-panel,
+  .control-panel {
+    padding:
+      16px
+      12px;
+  }
+
+
+  .panel-head {
+    min-height: 58px;
+  }
+
+
+  .canvas-foot {
+    font-size: 6px;
+  }
+
+
+  /* CAPTION */
+
+  .identity-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .caption-title,
+  .caption-editor {
+    padding:
+      34px
+      14px;
+  }
+
+
+  .caption-field textarea {
+    min-height: 390px;
+  }
+
+
+  .caption-actions {
+    align-items:
+      stretch;
+
+    flex-direction:
+      column;
+  }
+
+
+  .action.copy {
+    width: 100%;
+  }
+
+
+  /* FOOTER */
+
+  footer {
+    min-height: 110px;
+
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+
+    justify-content:
+      center;
+  }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media (
+  max-width: 420px
+) {
+
+  .intro h1 {
+    font-size: 58px;
+  }
+
+
+  .step span {
+    font-size: 8px;
+  }
+
+
+  .step strong {
+    font-size: 7px;
+  }
+
+
+  .canvas-foot {
+    gap: 8px;
+  }
+
+
+  .panel-head h2 {
+    font-size: 38px;
+  }
+
+
+  .caption-title h2 {
+    font-size: 58px;
+  }
+
+}
+
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+
+  .action,
+  .file-button {
+    transition: none;
+  }
+
+}

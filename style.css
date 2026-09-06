@@ -1,24 +1,30 @@
 /* =========================================================
    PKKMB TEKNIK MESIN 2026
+   TWIBBON GENERATOR
    INDUSTRIAL EDITORIAL UI
    ========================================================= */
 
 
-/* =========================
+/* =========================================================
    RESET
-========================= */
+   ========================================================= */
 
 * {
   box-sizing: border-box;
 }
 
 html {
+  margin: 0;
+  padding: 0;
+
   scroll-behavior: smooth;
+
   background: #081b2b;
 }
 
 body {
   margin: 0;
+  padding: 0;
 
   min-width: 320px;
   min-height: 100vh;
@@ -40,6 +46,12 @@ textarea {
   font: inherit;
 }
 
+button,
+label,
+input[type="range"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
 button {
   color: inherit;
 }
@@ -50,9 +62,9 @@ img {
 }
 
 
-/* =========================
+/* =========================================================
    COLOR SYSTEM
-========================= */
+   ========================================================= */
 
 :root {
   --ink: #061522;
@@ -71,49 +83,29 @@ img {
 
   --black: #030b11;
 
-  --line:
-    rgba(
-      240,
-      234,
-      219,
-      0.22
-    );
+  --line: rgba(240, 234, 219, 0.22);
 
-  --line-soft:
-    rgba(
-      240,
-      234,
-      219,
-      0.10
-    );
+  --line-soft: rgba(240, 234, 219, 0.10);
 }
 
 
-/* =========================
-   PAGE SHELL
-========================= */
+/* =========================================================
+   MAIN SHELL
+   ========================================================= */
 
 .site-shell {
   position: relative;
 
-  width: min(
-    1480px,
-    100%
-  );
+  width: min(1480px, 100%);
 
   margin: 0 auto;
 
-  border-left:
-    1px solid
-    var(--line-soft);
-
-  border-right:
-    1px solid
-    var(--line-soft);
+  border-left: 1px solid var(--line-soft);
+  border-right: 1px solid var(--line-soft);
 }
 
 
-/* subtle engineering grid */
+/* engineering background grid */
 
 .site-shell::before {
   content: "";
@@ -126,72 +118,51 @@ img {
 
   pointer-events: none;
 
-  opacity: 0.14;
+  opacity: 0.12;
 
   background-image:
-
     linear-gradient(
-      rgba(
-        240,
-        234,
-        219,
-        0.12
-      )
-      1px,
+      rgba(240, 234, 219, 0.12) 1px,
       transparent 1px
     ),
-
     linear-gradient(
       90deg,
-      rgba(
-        240,
-        234,
-        219,
-        0.12
-      )
-      1px,
+      rgba(240, 234, 219, 0.12) 1px,
       transparent 1px
     );
 
-  background-size:
-    40px 40px;
+  background-size: 40px 40px;
 }
 
 
-/* =========================
+/* =========================================================
    TOPBAR
-========================= */
+   ========================================================= */
 
 .topbar {
   min-height: 78px;
 
   padding:
     14px
-    clamp(
-      18px,
-      3vw,
-      44px
-    );
+    clamp(18px, 3vw, 44px);
 
   display: flex;
 
   align-items: center;
 
-  justify-content:
-    space-between;
+  justify-content: space-between;
 
   gap: 30px;
 
-  border-bottom:
-    1px solid
-    var(--line);
+  border-bottom: 1px solid var(--line);
 
-  background:
-    var(--navy);
+  background: var(--navy);
 }
 
 
-/* BRAND */
+/* =========================================================
+   BRAND
+   ========================================================= */
 
 .brand-lockup {
   display: flex;
@@ -203,17 +174,18 @@ img {
 
 
 .brand-mark {
-  min-width: 50px;
+  width: 50px;
+  height: 50px;
 
-  min-height: 50px;
+  flex-shrink: 0;
 
   display: grid;
 
   place-items: center;
 
-  border:
-    2px solid
-    var(--paper);
+  border: 2px solid var(--paper);
+
+  color: var(--paper);
 
   font-family:
     "Arial Black",
@@ -224,8 +196,7 @@ img {
 
   font-weight: 900;
 
-  letter-spacing:
-    -0.04em;
+  letter-spacing: -0.04em;
 }
 
 
@@ -239,31 +210,29 @@ img {
 .brand-lockup strong {
   font-size: 11px;
 
-  letter-spacing:
-    0.11em;
+  letter-spacing: 0.11em;
 }
 
 
 .brand-lockup small {
-  color:
-    var(--paper-dim);
+  color: var(--paper-dim);
 
   font-size: 8px;
 
-  letter-spacing:
-    0.11em;
+  letter-spacing: 0.11em;
 }
 
 
-/* topbar right */
+/* =========================================================
+   TOPBAR META
+   ========================================================= */
 
 .topbar-meta {
   display: flex;
 
   gap: 28px;
 
-  color:
-    var(--paper-dim);
+  color: var(--paper-dim);
 
   font-family:
     "Courier New",
@@ -273,53 +242,35 @@ img {
 
   font-weight: 700;
 
-  letter-spacing:
-    0.11em;
+  letter-spacing: 0.11em;
 }
 
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+   ========================================================= */
 
 .intro {
   min-height: 470px;
 
   padding:
-
-    clamp(
-      48px,
-      7vw,
-      92px
-    )
-
-    clamp(
-      18px,
-      5vw,
-      76px
-    )
-
+    clamp(48px, 7vw, 92px)
+    clamp(18px, 5vw, 76px)
     44px;
 
   display: grid;
 
   grid-template-columns:
-    minmax(
-      0,
-      1fr
-    )
+    minmax(0, 1fr)
     auto;
 
   align-items: end;
 
   gap: 30px;
 
-  border-bottom:
-    1px solid
-    var(--line);
+  border-bottom: 1px solid var(--line);
 
-  background:
-    var(--navy);
+  background: var(--navy);
 }
 
 
@@ -328,15 +279,16 @@ img {
 }
 
 
-/* small label */
+/* =========================================================
+   SMALL SECTION LABEL
+   ========================================================= */
 
 .section-code {
   display: inline-block;
 
   margin-bottom: 18px;
 
-  color:
-    var(--orange);
+  color: var(--orange);
 
   font-family:
     "Courier New",
@@ -346,18 +298,18 @@ img {
 
   font-weight: 800;
 
-  letter-spacing:
-    0.11em;
+  letter-spacing: 0.11em;
 }
 
 
-/* BIG TITLE */
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
 
 .intro h1 {
   margin: 0;
 
-  color:
-    var(--paper);
+  color: var(--paper);
 
   font-family:
     Impact,
@@ -366,56 +318,39 @@ img {
     "Arial Black",
     sans-serif;
 
-  font-size:
-
-    clamp(
-      66px,
-      11.2vw,
-      162px
-    );
+  font-size: clamp(66px, 11.2vw, 162px);
 
   font-weight: 900;
 
   line-height: 0.75;
 
-  letter-spacing:
-    -0.045em;
+  letter-spacing: -0.045em;
 
-  text-transform:
-    uppercase;
+  text-transform: uppercase;
 }
 
 
 .intro h1 span {
-  color:
-    var(--orange);
+  color: var(--orange);
 }
 
 
 .intro p {
   max-width: 650px;
 
-  margin:
-    34px
-    0
-    0;
+  margin: 34px 0 0;
 
-  color:
-    var(--paper-dim);
+  color: var(--paper-dim);
 
-  font-size:
-
-    clamp(
-      13px,
-      1.2vw,
-      16px
-    );
+  font-size: clamp(13px, 1.2vw, 16px);
 
   line-height: 1.65;
 }
 
 
-/* HERO SIDE INFO */
+/* =========================================================
+   HERO SIDE NOTE
+   ========================================================= */
 
 .intro-note {
   width: 94px;
@@ -424,33 +359,24 @@ img {
 
   align-self: stretch;
 
-  border-left:
-    1px solid
-    var(--line);
+  border-left: 1px solid var(--line);
 }
 
 
 .intro-note span {
   min-height: 86px;
 
-  padding:
-    12px
-    8px;
+  padding: 12px 8px;
 
   display: flex;
 
-  align-items:
-    flex-end;
+  align-items: flex-end;
 
-  justify-content:
-    flex-end;
+  justify-content: flex-end;
 
-  border-bottom:
-    1px solid
-    var(--line);
+  border-bottom: 1px solid var(--line);
 
-  color:
-    var(--paper-dim);
+  color: var(--paper-dim);
 
   font-family:
     "Courier New",
@@ -460,56 +386,40 @@ img {
 
   font-weight: 700;
 
-  writing-mode:
-    vertical-rl;
+  writing-mode: vertical-rl;
 
-  transform:
-    rotate(180deg);
+  transform: rotate(180deg);
 }
 
 
-/* =========================
+/* =========================================================
    WORKSPACE
-========================= */
+   ========================================================= */
 
 .workspace {
-  border-bottom:
-    1px solid
-    var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 
-/* =========================
-   STEPS
-========================= */
+/* =========================================================
+   STEP RAIL
+   ========================================================= */
 
 .step-rail {
   min-height: 62px;
 
   display: grid;
 
-  grid-template-columns:
-    repeat(
-      3,
-      1fr
-    );
+  grid-template-columns: repeat(3, 1fr);
 
-  border-bottom:
-    1px solid
-    var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 
 .step {
   padding:
-
     15px
-
-    clamp(
-      16px,
-      2.6vw,
-      38px
-    );
+    clamp(16px, 2.6vw, 38px);
 
   display: flex;
 
@@ -517,12 +427,9 @@ img {
 
   gap: 13px;
 
-  border-right:
-    1px solid
-    var(--line);
+  border-right: 1px solid var(--line);
 
-  color:
-    var(--paper-dim);
+  color: var(--paper-dim);
 }
 
 
@@ -532,8 +439,7 @@ img {
 
 
 .step span {
-  color:
-    var(--orange);
+  color: var(--orange);
 
   font-family:
     "Courier New",
@@ -546,29 +452,20 @@ img {
 .step strong {
   font-size: 10px;
 
-  letter-spacing:
-    0.12em;
+  letter-spacing: 0.12em;
 }
 
 
-/* =========================
+/* =========================================================
    EDITOR GRID
-========================= */
+   ========================================================= */
 
 .editor-grid {
   display: grid;
 
   grid-template-columns:
-
-    minmax(
-      0,
-      1.58fr
-    )
-
-    minmax(
-      330px,
-      0.72fr
-    );
+    minmax(0, 1.58fr)
+    minmax(330px, 0.72fr);
 }
 
 
@@ -578,37 +475,31 @@ img {
 }
 
 
-/* =========================
+/* =========================================================
    PREVIEW PANEL
-========================= */
+   ========================================================= */
 
 .preview-panel {
-  padding:
+  padding: clamp(18px, 3vw, 42px);
 
-    clamp(
-      18px,
-      3vw,
-      42px
-    );
+  border-right: 1px solid var(--line);
 
-  border-right:
-    1px solid
-    var(--line);
+  background: var(--navy);
 }
 
 
-/* PANEL HEADER */
+/* =========================================================
+   PANEL HEAD
+   ========================================================= */
 
 .panel-head {
   min-height: 70px;
 
   display: flex;
 
-  align-items:
-    flex-start;
+  align-items: flex-start;
 
-  justify-content:
-    space-between;
+  justify-content: space-between;
 
   gap: 20px;
 }
@@ -629,25 +520,21 @@ img {
     "Arial Black",
     sans-serif;
 
-  font-size:
+  font-size: clamp(34px, 4vw, 54px);
 
-    clamp(
-      34px,
-      4vw,
-      54px
-    );
+  font-weight: 900;
 
   line-height: 0.85;
 
-  letter-spacing:
-    -0.03em;
+  letter-spacing: -0.03em;
 
-  text-transform:
-    uppercase;
+  text-transform: uppercase;
 }
 
 
-/* LOCAL INDICATOR */
+/* =========================================================
+   STATUS DOT
+   ========================================================= */
 
 .status-dot {
   display: flex;
@@ -656,8 +543,7 @@ img {
 
   gap: 7px;
 
-  color:
-    var(--paper-dim);
+  color: var(--paper-dim);
 
   font-family:
     "Courier New",
@@ -667,81 +553,78 @@ img {
 
   font-weight: 800;
 
-  letter-spacing:
-    0.11em;
+  letter-spacing: 0.11em;
 }
 
 
 .status-dot i {
   width: 7px;
-
   height: 7px;
+
+  flex-shrink: 0;
 
   border-radius: 50%;
 
-  background:
-    var(--orange);
+  background: var(--orange);
 }
 
 
-/* =========================
-   CANVAS
-========================= */
+/* =========================================================
+   CANVAS SHELL
+   IMPORTANT: ALWAYS 4:5
+   ========================================================= */
 
 .canvas-shell {
   position: relative;
 
-  width:
-    min(
-      100%,
-      760px
-    );
+  width: min(100%, 760px);
 
-  margin:
-    12px
-    auto
-    0;
+  aspect-ratio: 4 / 5;
 
-  aspect-ratio:
-    4 / 5;
+  margin: 12px auto 0;
 
   overflow: hidden;
 
-  border:
-    1px solid
-    var(--paper);
+  border: 1px solid var(--paper);
 
-  background:
-    #102235;
+  background: #102235;
 
   touch-action: none;
 
   user-select: none;
+
+  isolation: isolate;
 }
 
 
-/* drag file hover */
+/* drag-over desktop */
 
 .canvas-shell.drag-over {
-  outline:
-    5px solid
-    var(--orange);
+  outline: 4px solid var(--orange);
 
-  outline-offset:
-    -5px;
+  outline-offset: -4px;
 }
 
 
-/* CANVAS */
+/* =========================================================
+   CANVAS
+   ========================================================= */
 
 canvas {
-  width: 100%;
+  position: absolute;
 
+  inset: 0;
+
+  width: 100%;
   height: 100%;
 
   display: block;
 
   cursor: grab;
+
+  image-rendering: auto;
+
+  touch-action: none;
 }
 
 
@@ -750,12 +633,16 @@ canvas.dragging {
 }
 
 
-/* EMPTY STATE */
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
 
 .empty-state {
   position: absolute;
 
   inset: 0;
+
+  z-index: 2;
 
   display: grid;
 
@@ -765,15 +652,26 @@ canvas.dragging {
 
   gap: 7px;
 
+  padding: 30px;
+
   text-align: center;
 
   pointer-events: none;
+
+  color: var(--paper);
+}
+
+
+/* FIX BUG:
+   setelah foto masuk, state ini beneran hilang */
+
+.empty-state[hidden] {
+  display: none !important;
 }
 
 
 .empty-index {
-  color:
-    var(--orange);
+  color: var(--orange);
 
   font-family:
     "Courier New",
@@ -789,41 +687,37 @@ canvas.dragging {
     Arial,
     sans-serif;
 
-  font-size:
+  font-size: clamp(18px, 3vw, 32px);
 
-    clamp(
-      18px,
-      3vw,
-      32px
-    );
-
-  letter-spacing:
-    -0.04em;
+  letter-spacing: -0.04em;
 }
 
 
 .empty-state > span:last-child {
-  color:
-    var(--paper-dim);
+  color: var(--paper-dim);
 
   font-size: 11px;
+
+  line-height: 1.5;
 }
 
 
-/* CANVAS FOOTER */
+/* =========================================================
+   CANVAS FOOT
+   ========================================================= */
 
 .canvas-foot {
   margin-top: 11px;
 
   display: flex;
 
-  justify-content:
-    space-between;
+  align-items: center;
+
+  justify-content: space-between;
 
   gap: 14px;
 
-  color:
-    var(--paper-dim);
+  color: var(--paper-dim);
 
   font-family:
     "Courier New",
@@ -833,23 +727,16 @@ canvas.dragging {
 
   font-weight: 800;
 
-  letter-spacing:
-    0.11em;
+  letter-spacing: 0.11em;
 }
 
 
-/* =========================
+/* =========================================================
    CONTROL PANEL
-========================= */
+   ========================================================= */
 
 .control-panel {
-  padding:
-
-    clamp(
-      18px,
-      3vw,
-      36px
-    );
+  padding: clamp(18px, 3vw, 36px);
 
   display: flex;
 
@@ -857,21 +744,18 @@ canvas.dragging {
 
   gap: 20px;
 
-  background:
-    var(--ink);
+  background: var(--ink);
 }
 
 
-/* =========================
+/* =========================================================
    FILE BUTTON
-========================= */
+   ========================================================= */
 
 .file-button {
   min-height: 92px;
 
-  padding:
-    14px
-    17px;
+  padding: 14px 17px;
 
   display: flex;
 
@@ -879,49 +763,41 @@ canvas.dragging {
 
   gap: 15px;
 
-  border:
-    1px solid
-    var(--paper);
+  border: 1px solid var(--paper);
 
   cursor: pointer;
 
-  background:
-    var(--paper);
+  background: var(--paper);
 
-  color:
-    var(--ink);
+  color: var(--ink);
 
   transition:
-
-    background
-    140ms ease,
-
-    color
-    140ms ease;
+    background 140ms ease,
+    color 140ms ease,
+    transform 140ms ease;
 }
 
 
 .file-button:hover {
-  background:
-    var(--orange);
+  background: var(--orange);
 
-  color:
-    #ffffff;
+  color: #ffffff;
+
+  transform: translateY(-2px);
 }
 
 
 .file-button-index {
   width: 44px;
-
   height: 44px;
+
+  flex-shrink: 0;
 
   display: grid;
 
   place-items: center;
 
-  border:
-    1px solid
-    currentColor;
+  border: 1px solid currentColor;
 
   font-size: 26px;
 
@@ -939,8 +815,7 @@ canvas.dragging {
 .file-button strong {
   font-size: 13px;
 
-  letter-spacing:
-    0.06em;
+  letter-spacing: 0.06em;
 }
 
 
@@ -955,22 +830,16 @@ canvas.dragging {
 }
 
 
-/* =========================
+/* =========================================================
    CONTROL BLOCK
-========================= */
+   ========================================================= */
 
 .control-block {
-  padding:
-    18px
-    0;
+  padding: 18px 0;
 
-  border-top:
-    1px solid
-    var(--line);
+  border-top: 1px solid var(--line);
 
-  border-bottom:
-    1px solid
-    var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 
@@ -981,7 +850,9 @@ canvas.dragging {
 }
 
 
-/* CONTROL LABEL */
+/* =========================================================
+   CONTROL LABEL
+   ========================================================= */
 
 .control-label {
   margin-bottom: 14px;
@@ -990,8 +861,7 @@ canvas.dragging {
 
   align-items: center;
 
-  justify-content:
-    space-between;
+  justify-content: space-between;
 
   font-family:
     "Courier New",
@@ -1001,20 +871,17 @@ canvas.dragging {
 
   font-weight: 800;
 
-  letter-spacing:
-    0.11em;
+  letter-spacing: 0.11em;
 }
 
 
 .control-label output {
-  color:
-    var(--orange);
+  color: var(--orange);
 }
 
 
 .control-title {
-  color:
-    var(--paper-dim);
+  color: var(--paper-dim);
 
   font-family:
     "Courier New",
@@ -1024,45 +891,46 @@ canvas.dragging {
 
   font-weight: 800;
 
-  letter-spacing:
-    0.11em;
+  letter-spacing: 0.11em;
 }
 
 
-/* =========================
+/* =========================================================
    RANGE
-========================= */
+   ========================================================= */
 
 input[type="range"] {
   width: 100%;
 
-  accent-color:
-    var(--orange);
+  height: 4px;
+
+  cursor: pointer;
+
+  accent-color: var(--orange);
 }
 
 
 input[type="range"]:disabled {
   opacity: 0.3;
+
+  cursor: not-allowed;
 }
 
 
-/* =========================
-   BUTTON SYSTEM
-========================= */
+/* =========================================================
+   ACTION BUTTON BASE
+   ========================================================= */
 
 .action {
   min-height: 50px;
 
-  padding:
-    0
-    17px;
+  padding: 0 17px;
 
   display: flex;
 
   align-items: center;
 
-  justify-content:
-    space-between;
+  justify-content: space-between;
 
   gap: 16px;
 
@@ -1081,28 +949,18 @@ input[type="range"]:disabled {
 
   font-weight: 900;
 
-  letter-spacing:
-    0.08em;
+  letter-spacing: 0.08em;
 
   transition:
-
-    transform
-    120ms ease,
-
-    background
-    120ms ease,
-
-    color
-    120ms ease,
-
-    border-color
-    120ms ease;
+    transform 120ms ease,
+    background 120ms ease,
+    color 120ms ease,
+    border-color 120ms ease;
 }
 
 
 .action:hover:not(:disabled) {
-  transform:
-    translateY(-2px);
+  transform: translateY(-2px);
 }
 
 
@@ -1113,27 +971,27 @@ input[type="range"]:disabled {
 }
 
 
-/* SECONDARY */
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
 
 .action.secondary {
-  border:
-    1px solid
-    var(--line);
+  border: 1px solid var(--line);
 
-  background:
-    transparent;
+  background: transparent;
+
+  color: var(--paper);
 }
 
 
 .action.secondary:hover:not(:disabled) {
-  border-color:
-    var(--paper);
+  border-color: var(--paper);
 }
 
 
-/* =========================
-   EXPORT
-========================= */
+/* =========================================================
+   EXPORT BLOCK
+   ========================================================= */
 
 .export-block {
   margin-top: auto;
@@ -1144,9 +1002,7 @@ input[type="range"]:disabled {
 
   gap: 15px;
 
-  border-top:
-    1px solid
-    var(--line);
+  border-top: 1px solid var(--line);
 }
 
 
@@ -1167,39 +1023,38 @@ input[type="range"]:disabled {
 
   font-size: 10px;
 
-  letter-spacing:
-    0.07em;
+  letter-spacing: 0.07em;
 }
 
 
-/* PRIMARY BUTTON */
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
 
 .action.primary {
   min-height: 64px;
 
-  background:
-    var(--orange);
+  background: var(--orange);
 
-  color:
-    #ffffff;
+  color: #ffffff;
 
   font-size: 12px;
 }
 
 
 .action.primary:hover:not(:disabled) {
-  background:
-    var(--orange-dark);
+  background: var(--orange-dark);
 }
 
 
-/* PRIVACY TEXT */
+/* =========================================================
+   PRIVACY
+   ========================================================= */
 
 .privacy-note {
   margin: 0;
 
-  color:
-    #7e8c98;
+  color: #7e8c98;
 
   font-family:
     "Courier New",
@@ -1211,63 +1066,40 @@ input[type="range"]:disabled {
 }
 
 
-/* =========================
+/* =========================================================
    CAPTION SECTION
-========================= */
+   ========================================================= */
 
 .caption-section {
   display: grid;
 
   grid-template-columns:
+    minmax(260px, 0.55fr)
+    minmax(0, 1.45fr);
 
-    minmax(
-      260px,
-      0.55fr
-    )
-
-    minmax(
-      0,
-      1.45fr
-    );
-
-  border-bottom:
-    1px solid
-    var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 
-/* CAPTION TITLE */
+/* =========================================================
+   CAPTION TITLE
+   ========================================================= */
 
 .caption-title {
   padding:
+    clamp(34px, 5vw, 72px)
+    clamp(18px, 4vw, 58px);
 
-    clamp(
-      34px,
-      5vw,
-      72px
-    )
+  border-right: 1px solid var(--line);
 
-    clamp(
-      18px,
-      4vw,
-      58px
-    );
+  background: var(--orange);
 
-  border-right:
-    1px solid
-    var(--line);
-
-  background:
-    var(--orange);
-
-  color:
-    #ffffff;
+  color: #ffffff;
 }
 
 
 .caption-title .section-code {
-  color:
-    #ffffff;
+  color: #ffffff;
 
   opacity: 0.72;
 }
@@ -1283,33 +1115,22 @@ input[type="range"]:disabled {
     "Arial Black",
     sans-serif;
 
-  font-size:
-
-    clamp(
-      56px,
-      8vw,
-      105px
-    );
+  font-size: clamp(56px, 8vw, 105px);
 
   font-weight: 900;
 
   line-height: 0.76;
 
-  letter-spacing:
-    -0.04em;
+  letter-spacing: -0.04em;
 
-  text-transform:
-    uppercase;
+  text-transform: uppercase;
 }
 
 
 .caption-title p {
   max-width: 320px;
 
-  margin:
-    28px
-    0
-    0;
+  margin: 28px 0 0;
 
   font-size: 12px;
 
@@ -1317,32 +1138,26 @@ input[type="range"]:disabled {
 }
 
 
-/* =========================
+/* =========================================================
    CAPTION EDITOR
-========================= */
+   ========================================================= */
 
 .caption-editor {
-  padding:
-
-    clamp(
-      28px,
-      4vw,
-      58px
-    );
+  padding: clamp(28px, 4vw, 58px);
 
   display: grid;
 
   gap: 20px;
 
-  background:
-    var(--paper);
+  background: var(--paper);
 
-  color:
-    var(--ink);
+  color: var(--ink);
 }
 
 
-/* INPUT GRID */
+/* =========================================================
+   IDENTITY GRID
+   ========================================================= */
 
 .identity-grid {
   display: grid;
@@ -1373,59 +1188,51 @@ input[type="range"]:disabled {
 
   font-weight: 800;
 
-  letter-spacing:
-    0.11em;
+  letter-spacing: 0.11em;
 }
 
 
-/* INPUT */
+/* =========================================================
+   INPUT
+   ========================================================= */
 
 .identity-grid input,
 .caption-field textarea {
   width: 100%;
 
-  border:
-    1px solid
-    rgba(
-      6,
-      21,
-      34,
-      0.28
-    );
+  border: 1px solid rgba(6, 21, 34, 0.28);
 
   border-radius: 0;
 
   outline: none;
 
-  background:
-    transparent;
+  background: transparent;
 
-  color:
-    var(--ink);
+  color: var(--ink);
 }
 
 
 .identity-grid input {
   min-height: 49px;
 
-  padding:
-    0
-    13px;
+  padding: 0 13px;
 }
 
 
 .identity-grid input::placeholder {
-  color:
-    rgba(
-      6,
-      21,
-      34,
-      0.42
-    );
+  color: rgba(6, 21, 34, 0.42);
 }
 
 
-/* TEXTAREA */
+.identity-grid input:focus,
+.caption-field textarea:focus {
+  border-color: var(--orange);
+}
+
+
+/* =========================================================
+   TEXTAREA
+   ========================================================= */
 
 .caption-field textarea {
   min-height: 330px;
@@ -1440,24 +1247,16 @@ input[type="range"]:disabled {
 }
 
 
-.identity-grid input:focus,
-.caption-field textarea:focus {
-  border-color:
-    var(--orange);
-}
-
-
-/* =========================
+/* =========================================================
    CAPTION ACTIONS
-========================= */
+   ========================================================= */
 
 .caption-actions {
   display: flex;
 
   align-items: center;
 
-  justify-content:
-    space-between;
+  justify-content: space-between;
 
   gap: 18px;
 
@@ -1469,94 +1268,70 @@ input[type="range"]:disabled {
 
   font-weight: 800;
 
-  letter-spacing:
-    0.11em;
+  letter-spacing: 0.11em;
 }
 
 
 #captionStatus {
-  color:
-    rgba(
-      6,
-      21,
-      34,
-      0.55
-    );
+  color: rgba(6, 21, 34, 0.55);
 }
 
 
-/* COPY BUTTON */
+/* =========================================================
+   COPY BUTTON
+   ========================================================= */
 
 .action.copy {
   min-width: 190px;
 
-  border:
-    1px solid
-    var(--ink);
+  border: 1px solid var(--ink);
 
-  background:
-    var(--ink);
+  background: var(--ink);
 
-  color:
-    var(--paper);
+  color: var(--paper);
 }
 
 
 .action.copy:hover {
-  background:
-    var(--orange);
+  background: var(--orange);
 
-  border-color:
-    var(--orange);
+  border-color: var(--orange);
 
-  color:
-    #ffffff;
+  color: #ffffff;
 }
 
 
 .action.copy.copied {
-  background:
-    var(--orange);
+  background: var(--orange);
 
-  border-color:
-    var(--orange);
+  border-color: var(--orange);
 
-  color:
-    #ffffff;
+  color: #ffffff;
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+   ========================================================= */
 
 footer {
   min-height: 92px;
 
   padding:
-
     20px
-
-    clamp(
-      18px,
-      3vw,
-      44px
-    );
+    clamp(18px, 3vw, 44px);
 
   display: flex;
 
   align-items: center;
 
-  justify-content:
-    space-between;
+  justify-content: space-between;
 
   gap: 20px;
 
-  color:
-    var(--paper-dim);
+  color: var(--paper-dim);
 
-  background:
-    var(--black);
+  background: var(--black);
 
   font-family:
     "Courier New",
@@ -1566,8 +1341,7 @@ footer {
 
   font-weight: 700;
 
-  letter-spacing:
-    0.11em;
+  letter-spacing: 0.11em;
 }
 
 
@@ -1579,31 +1353,25 @@ footer > div {
 
 
 footer strong {
-  color:
-    var(--paper);
+  color: var(--paper);
 }
 
 
-/* =========================
+/* =========================================================
    TABLET
-========================= */
+   ========================================================= */
 
-@media (
-  max-width: 980px
-) {
+@media (max-width: 980px) {
 
   .editor-grid {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
 
 
   .preview-panel {
     border-right: 0;
 
-    border-bottom:
-      1px solid
-      var(--line);
+    border-bottom: 1px solid var(--line);
   }
 
 
@@ -1618,8 +1386,7 @@ footer strong {
 
 
   .caption-section {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
 
 
@@ -1628,49 +1395,41 @@ footer strong {
 
     border-bottom:
       1px solid
-      rgba(
-        6,
-        21,
-        34,
-        0.18
-      );
+      rgba(6, 21, 34, 0.18);
   }
 
 
   .caption-title h2 {
-    font-size:
-
-      clamp(
-        54px,
-        14vw,
-        98px
-      );
+    font-size: clamp(54px, 14vw, 98px);
   }
 
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+   ========================================================= */
 
-@media (
-  max-width: 680px
-) {
+@media (max-width: 680px) {
+
+  .site-shell {
+    border-left: 0;
+    border-right: 0;
+  }
+
+
+  /* TOP */
 
   .topbar {
     min-height: 68px;
 
-    padding:
-      10px
-      13px;
+    padding: 10px 13px;
   }
 
 
   .brand-mark {
-    min-width: 44px;
-
-    min-height: 44px;
+    width: 44px;
+    height: 44px;
   }
 
 
@@ -1695,26 +1454,16 @@ footer strong {
     min-height: 390px;
 
     padding:
-
       48px
-
       14px
-
       28px;
 
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
 
 
   .intro h1 {
-    font-size:
-
-      clamp(
-        61px,
-        20vw,
-        96px
-      );
+    font-size: clamp(61px, 20vw, 96px);
 
     line-height: 0.78;
   }
@@ -1730,14 +1479,17 @@ footer strong {
   }
 
 
-  /* STEPS */
+  /* STEP */
 
   .step {
-    padding:
-      13px
-      10px;
+    padding: 13px 10px;
 
     gap: 7px;
+  }
+
+
+  .step span {
+    font-size: 8px;
   }
 
 
@@ -1750,9 +1502,7 @@ footer strong {
 
   .preview-panel,
   .control-panel {
-    padding:
-      16px
-      12px;
+    padding: 16px 12px;
   }
 
 
@@ -1761,24 +1511,49 @@ footer strong {
   }
 
 
+  .panel-head h2 {
+    font-size: 44px;
+  }
+
+
+  /* CANVAS */
+
+  .canvas-shell {
+    width: 100%;
+
+    margin-top: 8px;
+  }
+
+
   .canvas-foot {
     font-size: 6px;
+
+    line-height: 1.4;
+  }
+
+
+  /* CONTROL */
+
+  .file-button {
+    min-height: 78px;
   }
 
 
   /* CAPTION */
 
   .identity-grid {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
 
 
   .caption-title,
   .caption-editor {
-    padding:
-      34px
-      14px;
+    padding: 34px 14px;
+  }
+
+
+  .caption-title h2 {
+    font-size: clamp(56px, 18vw, 88px);
   }
 
 
@@ -1788,11 +1563,9 @@ footer strong {
 
 
   .caption-actions {
-    align-items:
-      stretch;
+    align-items: stretch;
 
-    flex-direction:
-      column;
+    flex-direction: column;
   }
 
 
@@ -1806,39 +1579,36 @@ footer strong {
   footer {
     min-height: 110px;
 
-    align-items:
-      flex-start;
+    align-items: flex-start;
 
-    flex-direction:
-      column;
+    flex-direction: column;
 
-    justify-content:
-      center;
+    justify-content: center;
   }
 
 }
 
 
-/* =========================
+/* =========================================================
    SMALL PHONE
-========================= */
+   ========================================================= */
 
-@media (
-  max-width: 420px
-) {
+@media (max-width: 420px) {
 
   .intro h1 {
     font-size: 58px;
   }
 
 
-  .step span {
-    font-size: 8px;
+  .step {
+    padding: 12px 8px;
   }
 
 
   .step strong {
     font-size: 7px;
+
+    letter-spacing: 0.08em;
   }
 
 
@@ -1859,14 +1629,11 @@ footer strong {
 }
 
 
-/* =========================
-   ACCESSIBILITY
-========================= */
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
-@media (
-  prefers-reduced-motion:
-  reduce
-) {
+@media (prefers-reduced-motion: reduce) {
 
   html {
     scroll-behavior: auto;

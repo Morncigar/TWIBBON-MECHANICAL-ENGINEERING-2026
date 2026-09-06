@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+
 /* =========================================================
    PKKMB TEKNIK MESIN 2026
-   TWIBBON GENERATOR
    INDUSTRIAL EDITORIAL UI
    ========================================================= */
 
@@ -63,29 +65,36 @@ img {
 
 
 /* =========================================================
-   COLOR SYSTEM
+   COLOR + FONT SYSTEM
    ========================================================= */
 
 :root {
   --ink: #061522;
-
   --navy: #081b2b;
-
   --navy-2: #0d273d;
 
   --paper: #f0eadb;
-
   --paper-dim: #b9b3a6;
 
   --orange: #ef4a1a;
-
   --orange-dark: #bd3410;
 
   --black: #030b11;
 
   --line: rgba(240, 234, 219, 0.22);
-
   --line-soft: rgba(240, 234, 219, 0.10);
+
+  --font-display:
+    "Bebas Neue",
+    sans-serif;
+
+  --font-condensed:
+    "Barlow Condensed",
+    sans-serif;
+
+  --font-mono:
+    "IBM Plex Mono",
+    monospace;
 }
 
 
@@ -105,7 +114,7 @@ img {
 }
 
 
-/* engineering background grid */
+/* subtle technical grid */
 
 .site-shell::before {
   content: "";
@@ -187,37 +196,46 @@ img {
 
   color: var(--paper);
 
-  font-family:
-    "Arial Black",
-    Arial,
-    sans-serif;
+  font-family: var(--font-display);
 
-  font-size: 15px;
+  font-size: 22px;
 
-  font-weight: 900;
+  font-weight: 400;
 
-  letter-spacing: -0.04em;
+  line-height: 1;
+
+  letter-spacing: 0.03em;
 }
 
 
 .brand-lockup div {
   display: grid;
 
-  gap: 3px;
+  gap: 2px;
 }
 
 
 .brand-lockup strong {
-  font-size: 11px;
+  font-family: var(--font-condensed);
 
-  letter-spacing: 0.11em;
+  font-size: 14px;
+
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing: 0.10em;
 }
 
 
 .brand-lockup small {
   color: var(--paper-dim);
 
-  font-size: 8px;
+  font-family: var(--font-condensed);
+
+  font-size: 9px;
+
+  font-weight: 600;
 
   letter-spacing: 0.11em;
 }
@@ -234,15 +252,13 @@ img {
 
   color: var(--paper-dim);
 
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 10px;
 
-  font-weight: 700;
+  font-weight: 600;
 
-  letter-spacing: 0.11em;
+  letter-spacing: 0.08em;
 }
 
 
@@ -290,15 +306,13 @@ img {
 
   color: var(--orange);
 
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 9px;
 
-  font-weight: 800;
+  font-weight: 600;
 
-  letter-spacing: 0.11em;
+  letter-spacing: 0.12em;
 }
 
 
@@ -311,20 +325,15 @@ img {
 
   color: var(--paper);
 
-  font-family:
-    Impact,
-    Haettenschweiler,
-    "Arial Narrow Bold",
-    "Arial Black",
-    sans-serif;
+  font-family: var(--font-display);
 
-  font-size: clamp(66px, 11.2vw, 162px);
+  font-size: clamp(74px, 11.8vw, 174px);
 
-  font-weight: 900;
+  font-weight: 400;
 
-  line-height: 0.75;
+  line-height: 0.78;
 
-  letter-spacing: -0.045em;
+  letter-spacing: 0.005em;
 
   text-transform: uppercase;
 }
@@ -378,13 +387,13 @@ img {
 
   color: var(--paper-dim);
 
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 9px;
 
-  font-weight: 700;
+  font-weight: 600;
+
+  letter-spacing: 0.06em;
 
   writing-mode: vertical-rl;
 
@@ -441,18 +450,22 @@ img {
 .step span {
   color: var(--orange);
 
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 10px;
+
+  font-weight: 500;
 }
 
 
 .step strong {
-  font-size: 10px;
+  font-family: var(--font-condensed);
 
-  letter-spacing: 0.12em;
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.10em;
 }
 
 
@@ -513,20 +526,15 @@ img {
 .panel-head h2 {
   margin: 0;
 
-  font-family:
-    Impact,
-    Haettenschweiler,
-    "Arial Narrow Bold",
-    "Arial Black",
-    sans-serif;
+  font-family: var(--font-display);
 
-  font-size: clamp(34px, 4vw, 54px);
+  font-size: clamp(48px, 5.5vw, 74px);
 
-  font-weight: 900;
+  font-weight: 400;
 
-  line-height: 0.85;
+  line-height: 0.86;
 
-  letter-spacing: -0.03em;
+  letter-spacing: 0.01em;
 
   text-transform: uppercase;
 }
@@ -545,13 +553,11 @@ img {
 
   color: var(--paper-dim);
 
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 8px;
 
-  font-weight: 800;
+  font-weight: 600;
 
   letter-spacing: 0.11em;
 }
@@ -571,7 +577,6 @@ img {
 
 /* =========================================================
    CANVAS SHELL
-   IMPORTANT: ALWAYS 4:5
    ========================================================= */
 
 .canvas-shell {
@@ -596,8 +601,6 @@ img {
   isolation: isolate;
 }
 
-
-/* drag-over desktop */
 
 .canvas-shell.drag-over {
   outline: 4px solid var(--orange);
@@ -662,9 +665,6 @@ canvas.dragging {
 }
 
 
-/* FIX BUG:
-   setelah foto masuk, state ini beneran hilang */
-
 .empty-state[hidden] {
   display: none !important;
 }
@@ -673,23 +673,24 @@ canvas.dragging {
 .empty-index {
   color: var(--orange);
 
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
-  font-size: 12px;
+  font-size: 11px;
+
+  font-weight: 600;
 }
 
 
 .empty-state strong {
-  font-family:
-    "Arial Black",
-    Arial,
-    sans-serif;
+  font-family: var(--font-display);
 
-  font-size: clamp(18px, 3vw, 32px);
+  font-size: clamp(32px, 4.2vw, 54px);
 
-  letter-spacing: -0.04em;
+  font-weight: 400;
+
+  line-height: 0.95;
+
+  letter-spacing: 0.02em;
 }
 
 
@@ -719,15 +720,13 @@ canvas.dragging {
 
   color: var(--paper-dim);
 
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 8px;
 
-  font-weight: 800;
+  font-weight: 500;
 
-  letter-spacing: 0.11em;
+  letter-spacing: 0.09em;
 }
 
 
@@ -799,7 +798,11 @@ canvas.dragging {
 
   border: 1px solid currentColor;
 
-  font-size: 26px;
+  font-family: var(--font-condensed);
+
+  font-size: 30px;
+
+  font-weight: 600;
 
   line-height: 1;
 }
@@ -808,12 +811,18 @@ canvas.dragging {
 .file-button > span:last-of-type {
   display: grid;
 
-  gap: 5px;
+  gap: 3px;
 }
 
 
 .file-button strong {
-  font-size: 13px;
+  font-family: var(--font-condensed);
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  line-height: 1;
 
   letter-spacing: 0.06em;
 }
@@ -822,11 +831,11 @@ canvas.dragging {
 .file-button small {
   opacity: 0.6;
 
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 8px;
+
+  font-weight: 500;
 }
 
 
@@ -863,15 +872,13 @@ canvas.dragging {
 
   justify-content: space-between;
 
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 9px;
 
-  font-weight: 800;
+  font-weight: 600;
 
-  letter-spacing: 0.11em;
+  letter-spacing: 0.10em;
 }
 
 
@@ -883,13 +890,11 @@ canvas.dragging {
 .control-title {
   color: var(--paper-dim);
 
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 8px;
 
-  font-weight: 800;
+  font-weight: 600;
 
   letter-spacing: 0.11em;
 }
@@ -940,16 +945,13 @@ input[type="range"]:disabled {
 
   cursor: pointer;
 
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+  font-family: var(--font-condensed);
 
-  font-size: 10px;
+  font-size: 15px;
 
-  font-weight: 900;
+  font-weight: 800;
 
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
 
   transition:
     transform 120ms ease,
@@ -1017,13 +1019,13 @@ input[type="range"]:disabled {
 
 
 .export-block strong {
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 10px;
 
-  letter-spacing: 0.07em;
+  font-weight: 600;
+
+  letter-spacing: 0.06em;
 }
 
 
@@ -1038,7 +1040,11 @@ input[type="range"]:disabled {
 
   color: #ffffff;
 
-  font-size: 12px;
+  font-family: var(--font-condensed);
+
+  font-size: 18px;
+
+  font-weight: 800;
 }
 
 
@@ -1056,9 +1062,7 @@ input[type="range"]:disabled {
 
   color: #7e8c98;
 
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 8px;
 
@@ -1108,20 +1112,15 @@ input[type="range"]:disabled {
 .caption-title h2 {
   margin: 0;
 
-  font-family:
-    Impact,
-    Haettenschweiler,
-    "Arial Narrow Bold",
-    "Arial Black",
-    sans-serif;
+  font-family: var(--font-display);
 
-  font-size: clamp(56px, 8vw, 105px);
+  font-size: clamp(72px, 9vw, 122px);
 
-  font-weight: 900;
+  font-weight: 400;
 
-  line-height: 0.76;
+  line-height: 0.78;
 
-  letter-spacing: -0.04em;
+  letter-spacing: 0.01em;
 
   text-transform: uppercase;
 }
@@ -1180,15 +1179,13 @@ input[type="range"]:disabled {
 
 .identity-grid label > span,
 .caption-field > span {
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 8px;
 
-  font-weight: 800;
+  font-weight: 600;
 
-  letter-spacing: 0.11em;
+  letter-spacing: 0.10em;
 }
 
 
@@ -1216,6 +1213,8 @@ input[type="range"]:disabled {
   min-height: 49px;
 
   padding: 0 13px;
+
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -1241,6 +1240,11 @@ input[type="range"]:disabled {
 
   resize: vertical;
 
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   font-size: 13px;
 
   line-height: 1.62;
@@ -1260,15 +1264,13 @@ input[type="range"]:disabled {
 
   gap: 18px;
 
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 8px;
 
-  font-weight: 800;
+  font-weight: 600;
 
-  letter-spacing: 0.11em;
+  letter-spacing: 0.10em;
 }
 
 
@@ -1289,6 +1291,12 @@ input[type="range"]:disabled {
   background: var(--ink);
 
   color: var(--paper);
+
+  font-family: var(--font-condensed);
+
+  font-size: 16px;
+
+  font-weight: 800;
 }
 
 
@@ -1333,15 +1341,13 @@ footer {
 
   background: var(--black);
 
-  font-family:
-    "Courier New",
-    monospace;
+  font-family: var(--font-mono);
 
   font-size: 8px;
 
-  font-weight: 700;
+  font-weight: 500;
 
-  letter-spacing: 0.11em;
+  letter-spacing: 0.09em;
 }
 
 
@@ -1354,6 +1360,14 @@ footer > div {
 
 footer strong {
   color: var(--paper);
+
+  font-family: var(--font-condensed);
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.10em;
 }
 
 
@@ -1400,7 +1414,12 @@ footer strong {
 
 
   .caption-title h2 {
-    font-size: clamp(54px, 14vw, 98px);
+    font-size:
+      clamp(
+        72px,
+        15vw,
+        110px
+      );
   }
 
 }
@@ -1418,28 +1437,32 @@ footer strong {
   }
 
 
-  /* TOP */
+  /* TOPBAR */
 
   .topbar {
     min-height: 68px;
 
-    padding: 10px 13px;
+    padding:
+      10px
+      13px;
   }
 
 
   .brand-mark {
     width: 44px;
     height: 44px;
+
+    font-size: 20px;
   }
 
 
   .brand-lockup strong {
-    font-size: 9px;
+    font-size: 12px;
   }
 
 
   .brand-lockup small {
-    font-size: 7px;
+    font-size: 8px;
   }
 
 
@@ -1463,9 +1486,9 @@ footer strong {
 
 
   .intro h1 {
-    font-size: clamp(61px, 20vw, 96px);
+    font-size: clamp(72px, 21vw, 104px);
 
-    line-height: 0.78;
+    line-height: 0.79;
   }
 
 
@@ -1494,7 +1517,7 @@ footer strong {
 
 
   .step strong {
-    font-size: 8px;
+    font-size: 11px;
   }
 
 
@@ -1512,7 +1535,7 @@ footer strong {
 
 
   .panel-head h2 {
-    font-size: 44px;
+    font-size: 58px;
   }
 
 
@@ -1539,6 +1562,21 @@ footer strong {
   }
 
 
+  .file-button strong {
+    font-size: 17px;
+  }
+
+
+  .action {
+    font-size: 14px;
+  }
+
+
+  .action.primary {
+    font-size: 17px;
+  }
+
+
   /* CAPTION */
 
   .identity-grid {
@@ -1548,12 +1586,19 @@ footer strong {
 
   .caption-title,
   .caption-editor {
-    padding: 34px 14px;
+    padding:
+      34px
+      14px;
   }
 
 
   .caption-title h2 {
-    font-size: clamp(56px, 18vw, 88px);
+    font-size:
+      clamp(
+        76px,
+        20vw,
+        104px
+      );
   }
 
 
@@ -1571,6 +1616,8 @@ footer strong {
 
   .action.copy {
     width: 100%;
+
+    font-size: 16px;
   }
 
 
@@ -1596,7 +1643,7 @@ footer strong {
 @media (max-width: 420px) {
 
   .intro h1 {
-    font-size: 58px;
+    font-size: 70px;
   }
 
 
@@ -1606,9 +1653,9 @@ footer strong {
 
 
   .step strong {
-    font-size: 7px;
+    font-size: 10px;
 
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
   }
 
 
@@ -1618,12 +1665,12 @@ footer strong {
 
 
   .panel-head h2 {
-    font-size: 38px;
+    font-size: 52px;
   }
 
 
   .caption-title h2 {
-    font-size: 58px;
+    font-size: 72px;
   }
 
 }

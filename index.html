@@ -2,14 +2,20 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#071d33" />
 
-  <title>PKKMB Teknik Mesin 2026 | Twibbon</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
+  <meta name="theme-color" content="#081b2b" />
+  <meta name="color-scheme" content="dark" />
+
+  <title>PKKMB Teknik Mesin 2026 | Twibbon Generator</title>
 
   <meta
     name="description"
-    content="Pasang foto untuk Twibbon PKKMB Teknik Mesin Itenas 2026."
+    content="Pasang foto untuk Twibbon PKKMB Teknik Mesin Itenas 2026. Foto diproses langsung di perangkat."
   />
 
   <link rel="stylesheet" href="style.css" />
@@ -17,150 +23,512 @@
 
 <body>
 
-  <main class="page">
+  <div class="site-shell">
 
-    <!-- HEADER -->
-    <section class="hero">
+    <!-- =========================
+         TOPBAR
+    ========================== -->
 
-      <p class="eyebrow">
-        PKKMB TEKNIK MESIN 2026
-      </p>
+    <header class="topbar">
 
-      <h1>
-        Pasang foto.<br />
-        <span>See you on campus.</span>
-      </h1>
+      <div class="brand-lockup">
 
-      <p class="lead">
-        Upload foto, atur posisi dan zoom, lalu simpan hasilnya dalam format 4:5
-        untuk Instagram.
-      </p>
+        <span class="brand-mark">
+          M26
+        </span>
 
-    </section>
+        <div>
+          <strong>
+            TEKNIK MESIN ITENAS
+          </strong>
 
-
-    <!-- EDITOR -->
-    <section class="editor-card">
-
-      <!-- CANVAS -->
-      <div class="canvas-shell" id="canvasShell">
-
-        <canvas
-          id="canvas"
-          width="1080"
-          height="1350"
-          aria-label="Preview Twibbon PKKMB Teknik Mesin 2026"
-        ></canvas>
-
-        <div class="empty-state" id="emptyState">
-
-          <strong>Belum ada foto.</strong>
-
-          <span>
-            Upload foto terlebih dahulu untuk mulai mengatur Twibbon.
-          </span>
-
+          <small>
+            MECHANICAL ENGINEERING
+          </small>
         </div>
 
       </div>
 
 
-      <!-- CONTROLS -->
-      <div class="controls">
+      <div class="topbar-meta">
 
-        <!-- UPLOAD -->
-        <label class="upload-btn">
+        <span>
+          TWIBBON GENERATOR
+        </span>
 
-          <input
-            id="photoInput"
-            type="file"
-            accept="image/*"
-            hidden
-          />
+        <span>
+          2026
+        </span>
 
-          <span>+ Upload Foto</span>
+      </div>
 
-        </label>
+    </header>
 
 
-        <!-- ZOOM -->
-        <div class="control-group">
 
-          <div class="control-head">
+    <!-- =========================
+         MAIN
+    ========================== -->
 
-            <label for="zoomRange">
-              Zoom
-            </label>
-
-            <output id="zoomValue">
-              100%
-            </output>
-
-          </div>
-
-          <input
-            id="zoomRange"
-            type="range"
-            min="1"
-            max="3"
-            value="1"
-            step="0.01"
-          />
-
-        </div>
+    <main>
 
 
-        <!-- BUTTON -->
-        <div class="button-row">
+      <!-- =========================
+           HERO
+      ========================== -->
 
-          <button
-            id="resetBtn"
-            class="btn ghost"
-            type="button"
-            disabled
-          >
-            Reset Posisi
-          </button>
+      <section class="intro">
 
-          <button
-            id="downloadBtn"
-            class="btn primary"
-            type="button"
-            disabled
-          >
-            Simpan PNG
-          </button>
+        <div class="intro-copy">
+
+          <span class="section-code">
+            00 / START
+          </span>
+
+
+          <h1>
+            PKKMB<br />
+            TEKNIK MESIN<br />
+            <span>2026</span>
+          </h1>
+
+
+          <p>
+            Upload foto, atur komposisinya, lalu simpan dalam format 4:5.
+            Semua proses berjalan langsung di perangkat.
+          </p>
 
         </div>
 
 
-        <p class="hint">
-          Drag foto langsung pada preview untuk mengatur posisi.
-          Hasil disimpan dalam ukuran 1080 × 1350 px.
-        </p>
+        <div
+          class="intro-note"
+          aria-hidden="true"
+        >
+
+          <span>
+            1080 × 1350
+          </span>
+
+          <span>
+            4 : 5
+          </span>
+
+          <span>
+            PNG
+          </span>
+
+        </div>
+
+      </section>
 
 
-        <!-- CAPTION -->
-        <div class="caption-card">
 
-          <div class="control-head">
+      <!-- =========================
+           WORKSPACE
+      ========================== -->
 
-            <span>Caption</span>
+      <section class="workspace">
 
-            <span
-              class="caption-status"
-              id="captionStatus"
-            >
-              siap dicopy
+
+        <!-- STEP INDICATOR -->
+
+        <div
+          class="step-rail"
+          aria-label="Alur penggunaan"
+        >
+
+          <div class="step active">
+
+            <span>
+              01
             </span>
 
+            <strong>
+              UPLOAD
+            </strong>
+
           </div>
 
 
-          <textarea
-            id="captionText"
-            rows="14"
-          >I’M READY FOR PKKMB TEKNIK MESIN 2026
+          <div class="step">
+
+            <span>
+              02
+            </span>
+
+            <strong>
+              ADJUST
+            </strong>
+
+          </div>
+
+
+          <div class="step">
+
+            <span>
+              03
+            </span>
+
+            <strong>
+              EXPORT
+            </strong>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- EDITOR GRID -->
+
+        <div class="editor-grid">
+
+
+          <!-- =========================
+               PREVIEW PANEL
+          ========================== -->
+
+          <section class="preview-panel">
+
+
+            <div class="panel-head">
+
+              <div>
+
+                <span class="section-code">
+                  01 / PREVIEW
+                </span>
+
+                <h2>
+                  FRAME
+                </h2>
+
+              </div>
+
+
+              <span class="status-dot">
+
+                <i></i>
+
+                LOCAL
+
+              </span>
+
+            </div>
+
+
+
+            <!-- CANVAS AREA -->
+
+            <div
+              class="canvas-shell"
+              id="dropZone"
+              aria-label="Area preview Twibbon"
+            >
+
+              <canvas
+                id="canvas"
+                width="1080"
+                height="1350"
+                aria-label="Preview Twibbon PKKMB Teknik Mesin 2026"
+              ></canvas>
+
+
+
+              <div
+                class="empty-state"
+                id="emptyState"
+              >
+
+                <span class="empty-index">
+                  01
+                </span>
+
+                <strong>
+                  DROP A PHOTO
+                </strong>
+
+                <span>
+                  atau pilih file dari perangkat
+                </span>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="canvas-foot">
+
+              <span>
+                DRAG TO REPOSITION
+              </span>
+
+              <span>
+                PINCH / SLIDER TO ZOOM
+              </span>
+
+            </div>
+
+          </section>
+
+
+
+          <!-- =========================
+               CONTROL PANEL
+          ========================== -->
+
+          <aside class="control-panel">
+
+
+            <div class="panel-head">
+
+              <div>
+
+                <span class="section-code">
+                  02 / CONTROL
+                </span>
+
+                <h2>
+                  ADJUST
+                </h2>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- UPLOAD -->
+
+            <label
+              class="file-button"
+              for="photoInput"
+            >
+
+              <span class="file-button-index">
+                +
+              </span>
+
+
+              <span>
+
+                <strong>
+                  PILIH FOTO
+                </strong>
+
+                <small>
+                  JPG, PNG, WEBP
+                </small>
+
+              </span>
+
+
+              <input
+                id="photoInput"
+                type="file"
+                accept="image/jpeg,image/png,image/webp,image/*"
+                hidden
+              />
+
+            </label>
+
+
+
+            <!-- ZOOM -->
+
+            <div class="control-block">
+
+              <div class="control-label">
+
+                <label for="zoomRange">
+                  ZOOM
+                </label>
+
+                <output id="zoomValue">
+                  100%
+                </output>
+
+              </div>
+
+
+              <input
+                id="zoomRange"
+                type="range"
+                min="1"
+                max="3"
+                value="1"
+                step="0.01"
+                disabled
+              />
+
+            </div>
+
+
+
+            <!-- POSITION -->
+
+            <div class="control-block compact">
+
+              <span class="control-title">
+                POSITION
+              </span>
+
+
+              <button
+                id="resetBtn"
+                class="action secondary"
+                type="button"
+                disabled
+              >
+
+                RESET POSISI
+
+              </button>
+
+            </div>
+
+
+
+            <!-- EXPORT -->
+
+            <div class="export-block">
+
+              <div>
+
+                <span class="section-code">
+                  03 / EXPORT
+                </span>
+
+                <strong>
+                  1080 × 1350 PX
+                </strong>
+
+              </div>
+
+
+              <button
+                id="downloadBtn"
+                class="action primary"
+                type="button"
+                disabled
+              >
+
+                SIMPAN PNG
+
+                <span>
+                  ↓
+                </span>
+
+              </button>
+
+            </div>
+
+
+
+            <p class="privacy-note">
+              Foto tidak dikirim ke server.
+              File hanya diproses di browser perangkat ini.
+            </p>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =========================
+           CAPTION SECTION
+      ========================== -->
+
+      <section class="caption-section">
+
+
+        <!-- CAPTION TITLE -->
+
+        <div class="caption-title">
+
+          <span class="section-code">
+            04 / CAPTION
+          </span>
+
+
+          <h2>
+            COPY.<br />
+            POST.
+          </h2>
+
+
+          <p>
+            Isi nama dan asal, lalu copy caption
+            yang sudah disiapkan.
+          </p>
+
+        </div>
+
+
+
+        <!-- CAPTION EDITOR -->
+
+        <div class="caption-editor">
+
+
+          <!-- IDENTITY INPUT -->
+
+          <div class="identity-grid">
+
+
+            <label>
+
+              <span>
+                NAMA
+              </span>
+
+              <input
+                id="nameInput"
+                type="text"
+                placeholder="Nama lengkap"
+                autocomplete="name"
+              />
+
+            </label>
+
+
+
+            <label>
+
+              <span>
+                ASAL SEKOLAH / KOTA
+              </span>
+
+              <input
+                id="originInput"
+                type="text"
+                placeholder="Contoh: SMAN 1 Bandung"
+              />
+
+            </label>
+
+          </div>
+
+
+
+          <!-- CAPTION -->
+
+          <label class="caption-field">
+
+            <span>
+              CAPTION PREVIEW
+            </span>
+
+
+            <textarea
+              id="captionText"
+              rows="13"
+            >I’M READY FOR PKKMB TEKNIK MESIN 2026
 
 Perkenalkan, saya [NAMA] dari [ASAL SEKOLAH / KOTA].
 
@@ -174,33 +542,80 @@ Sampai bertemu di kampus.
 
 #TeknikMesinItenas2026 #M26</textarea>
 
+          </label>
 
-          <button
-            id="copyCaptionBtn"
-            class="btn caption-copy"
-            type="button"
-          >
-            Copy Caption
-          </button>
+
+
+          <!-- COPY BUTTON -->
+
+          <div class="caption-actions">
+
+            <span
+              id="captionStatus"
+              role="status"
+            >
+              READY TO COPY
+            </span>
+
+
+            <button
+              id="copyCaptionBtn"
+              class="action copy"
+              type="button"
+            >
+
+              COPY CAPTION
+
+              <span>
+                ⧉
+              </span>
+
+            </button>
+
+          </div>
 
         </div>
 
-      </div>
+      </section>
 
-    </section>
+    </main>
 
 
-    <!-- FOOTER -->
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer>
 
+
+      <div>
+
+        <strong>
+          HMM ITENAS
+        </strong>
+
+        <span>
+          MECHANICAL ENGINEERING // M26
+        </span>
+
+      </div>
+
+
       <span>
-        Mechanical Engineering // M26
+        PKKMB TEKNIK MESIN 2026
       </span>
+
 
     </footer>
 
-  </main>
+  </div>
 
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
 
   <script src="app.js"></script>
 

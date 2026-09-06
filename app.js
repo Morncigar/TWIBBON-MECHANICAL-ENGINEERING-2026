@@ -17,6 +17,7 @@ const ctx = canvas.getContext("2d", {
 ctx.imageSmoothingEnabled = true;
 ctx.imageSmoothingQuality = "high";
 
+
 const photoInput = document.getElementById("photoInput");
 
 const zoomRange = document.getElementById("zoomRange");
@@ -70,9 +71,7 @@ let photoUrl = null;
 
 // =====================================================
 // PHOTO AREA
-//
-// Akan otomatis diganti setelah JS membaca
-// area transparan pada twibbon.
+// fallback sebelum transparent area terdeteksi
 // =====================================================
 
 let photoArea = {
@@ -122,7 +121,7 @@ let pinchStartZoom = 1;
 
 
 // =====================================================
-// BASIC HELPERS
+// HELPERS
 // =====================================================
 
 function clamp(value, min, max) {
@@ -134,7 +133,7 @@ function clamp(value, min, max) {
 
 
 // =====================================================
-// AUTO DETECT TRANSPARENT AREA
+// AUTO DETECT TRANSPARENT PHOTO AREA
 // =====================================================
 
 function detectPhotoArea() {
@@ -142,8 +141,10 @@ function detectPhotoArea() {
   const detectorCanvas =
     document.createElement("canvas");
 
+
   detectorCanvas.width =
     CANVAS_WIDTH;
+
 
   detectorCanvas.height =
     CANVAS_HEIGHT;
@@ -188,24 +189,20 @@ function detectPhotoArea() {
     imageData.data;
 
 
-  // ===================================================
-  // GRID SAMPLING
-  // ===================================================
+  // sampling supaya tetap ringan di HP
 
   const STEP = 4;
 
 
   const gridWidth =
     Math.ceil(
-      CANVAS_WIDTH /
-      STEP
+      CANVAS_WIDTH / STEP
     );
 
 
   const gridHeight =
     Math.ceil(
-      CANVAS_HEIGHT /
-      STEP
+      CANVAS_HEIGHT / STEP
     );
 
 
@@ -240,9 +237,8 @@ function detectPhotoArea() {
   }
 
 
-  // ===================================================
-  // START SEARCH
-  // ===================================================
+  // mulai pencarian dari area kiri-tengah,
+  // karena layout twibbon final punya area foto di sana
 
   const centerX =
     Math.floor(
@@ -263,6 +259,10 @@ function detectPhotoArea() {
   const TRANSPARENT_LIMIT = 40;
 
 
+  // ===================================================
+  // FIND TRANSPARENT START POINT
+  // ===================================================
+
   for (
     let radius = 0;
     radius < Math.max(
@@ -277,12 +277,8 @@ function detectPhotoArea() {
 
 
     for (
-      let y =
-        centerY - radius;
-
-      y <=
-        centerY + radius;
-
+      let y = centerY - radius;
+      y <= centerY + radius;
       y++
     ) {
 
@@ -290,19 +286,13 @@ function detectPhotoArea() {
         y < 0 ||
         y >= gridHeight
       ) {
-
         continue;
-
       }
 
 
       for (
-        let x =
-          centerX - radius;
-
-        x <=
-          centerX + radius;
-
+        let x = centerX - radius;
+        x <= centerX + radius;
         x++
       ) {
 
@@ -310,9 +300,7 @@ function detectPhotoArea() {
           x < 0 ||
           x >= gridWidth
         ) {
-
           continue;
-
         }
 
 
@@ -395,11 +383,18 @@ function detectPhotoArea() {
   const queueX = [];
   const queueY = [];
 
+
   let queueIndex = 0;
 
 
-  queueX.push(startX);
-  queueY.push(startY);
+  queueX.push(
+    startX
+  );
+
+
+  queueY.push(
+    startY
+  );
 
 
   let minX = startX;
@@ -435,9 +430,7 @@ function detectPhotoArea() {
       x >= gridWidth ||
       y >= gridHeight
     ) {
-
       continue;
-
     }
 
 
@@ -452,9 +445,7 @@ function detectPhotoArea() {
         index
       ]
     ) {
-
       continue;
-
     }
 
 
@@ -471,9 +462,7 @@ function detectPhotoArea() {
       >
       TRANSPARENT_LIMIT
     ) {
-
       continue;
-
     }
 
 
@@ -555,9 +544,7 @@ function detectPhotoArea() {
     STEP;
 
 
-  // ===================================================
-  // INSET
-  // ===================================================
+  // sedikit masuk ke dalam frame
 
   const INSET = 6;
 
@@ -597,19 +584,10 @@ function detectPhotoArea() {
 
 
   photoArea = {
-
-    x:
-      detectedX,
-
-    y:
-      detectedY,
-
-    width:
-      detectedWidth,
-
-    height:
-      detectedHeight
-
+    x: detectedX,
+    y: detectedY,
+    width: detectedWidth,
+    height: detectedHeight
   };
 
 
@@ -646,7 +624,7 @@ function getBasePhotoScale() {
 
 
 // =====================================================
-// DRAW CANVAS
+// DRAW
 // =====================================================
 
 function draw() {
@@ -1050,9 +1028,7 @@ function getPointerDistance() {
   if (
     pointers.length < 2
   ) {
-
     return null;
-
   }
 
 
@@ -1140,9 +1116,7 @@ canvas.addEventListener(
     );
 
 
-    // =================================================
     // PINCH START
-    // =================================================
 
     if (
       activePointers.size === 2
@@ -1170,9 +1144,7 @@ canvas.addEventListener(
     }
 
 
-    // =================================================
     // DRAG START
-    // =================================================
 
     const point =
       pointerToCanvas(
@@ -1239,9 +1211,7 @@ canvas.addEventListener(
     }
 
 
-    // =================================================
     // PINCH ZOOM
-    // =================================================
 
     if (
       activePointers.size >= 2 &&
@@ -1274,18 +1244,14 @@ canvas.addEventListener(
     }
 
 
-    // =================================================
     // DRAG PHOTO
-    // =================================================
 
     if (
       !drag.active ||
       event.pointerId !==
       drag.pointerId
     ) {
-
       return;
-
     }
 
 
@@ -1375,7 +1341,7 @@ canvas.addEventListener(
 
 
 // =====================================================
-// DRAG AND DROP
+// DRAG & DROP
 // =====================================================
 
 [
@@ -1541,17 +1507,19 @@ function captionTemplate(
     "[ASAL SEKOLAH / KOTA]";
 
 
-  return `I’M READY FOR PKKMB TEKNIK MESIN 2026
+  return `I’M READY FOR PKKMB TEKNIK MESIN 2026 ⚙️
 
 Perkenalkan, saya ${finalName} dari ${finalOrigin}.
 
 Mulai tahun ini, saya menjadi bagian dari Teknik Mesin Itenas angkatan 2026.
 
-Selama masa perkuliahan nanti, akan ada banyak hal baru yang ditemui, mulai dari lingkungan, kegiatan, sampai berbagai pengalaman selama menjadi mahasiswa Teknik Mesin.
+Selama masa perkuliahan, akan ada banyak hal baru yang saya temui, mulai dari lingkungan, kegiatan, sampai berbagai pengalaman selama menjadi mahasiswa Teknik Mesin Itenas.
 
-Untuk sekarang, ini menjadi awal masa perkuliahan saya di Itenas.
+Tahun ini menjadi awal masa perkuliahan saya di Institut Teknologi Nasional Bandung.
 
 Sampai bertemu di kampus.
+
+@hmm_itenas
 
 #TeknikMesinItenas2026 #M26`;
 

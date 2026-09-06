@@ -17,7 +17,6 @@ const ctx = canvas.getContext("2d", {
 ctx.imageSmoothingEnabled = true;
 ctx.imageSmoothingQuality = "high";
 
-
 const photoInput = document.getElementById("photoInput");
 
 const zoomRange = document.getElementById("zoomRange");
@@ -26,7 +25,6 @@ const zoomValue = document.getElementById("zoomValue");
 const resetBtn = document.getElementById("resetBtn");
 const downloadBtn = document.getElementById("downloadBtn");
 
-const emptyState = document.getElementById("emptyState");
 const dropZone = document.getElementById("dropZone");
 
 const nameInput = document.getElementById("nameInput");
@@ -38,7 +36,7 @@ const captionStatus = document.getElementById("captionStatus");
 
 
 // =====================================================
-// CANVAS
+// CANVAS SIZE
 // =====================================================
 
 const CANVAS_WIDTH = 1080;
@@ -47,7 +45,6 @@ const CANVAS_HEIGHT = 1350;
 
 // =====================================================
 // ZOOM LIMIT
-// HARUS SAMA DENGAN INDEX.HTML
 // =====================================================
 
 const MIN_ZOOM = 0.6;
@@ -64,7 +61,7 @@ overlay.src = "assets/twibbon.png";
 
 
 // =====================================================
-// PHOTO
+// PHOTO DATA
 // =====================================================
 
 let photo = null;
@@ -74,15 +71,15 @@ let photoUrl = null;
 // =====================================================
 // PHOTO AREA
 //
-// Ini bakal otomatis diganti setelah JS membaca
-// area transparan pada twibbon.png.
+// Akan otomatis diganti setelah JS membaca
+// area transparan pada twibbon.
 // =====================================================
 
 let photoArea = {
   x: 240,
-  y: 330,
+  y: 300,
   width: 600,
-  height: 600
+  height: 700
 };
 
 
@@ -103,6 +100,7 @@ const state = {
 
 const drag = {
   active: false,
+
   pointerId: null,
 
   startX: 0,
@@ -114,7 +112,7 @@ const drag = {
 
 
 // =====================================================
-// TOUCH / PINCH
+// PINCH ZOOM
 // =====================================================
 
 const activePointers = new Map();
@@ -124,7 +122,7 @@ let pinchStartZoom = 1;
 
 
 // =====================================================
-// HELPERS
+// BASIC HELPERS
 // =====================================================
 
 function clamp(value, min, max) {
@@ -136,7 +134,7 @@ function clamp(value, min, max) {
 
 
 // =====================================================
-// AUTO DETECT TRANSPARENT PHOTO AREA
+// AUTO DETECT TRANSPARENT AREA
 // =====================================================
 
 function detectPhotoArea() {
@@ -190,33 +188,42 @@ function detectPhotoArea() {
     imageData.data;
 
 
-  // Kita baca dalam grid lebih kecil
-  // supaya ringan di HP.
+  // ===================================================
+  // GRID SAMPLING
+  // ===================================================
 
   const STEP = 4;
 
+
   const gridWidth =
     Math.ceil(
-      CANVAS_WIDTH / STEP
+      CANVAS_WIDTH /
+      STEP
     );
+
 
   const gridHeight =
     Math.ceil(
-      CANVAS_HEIGHT / STEP
+      CANVAS_HEIGHT /
+      STEP
     );
 
 
-  function alphaAtGrid(gx, gy) {
+  function alphaAtGrid(
+    gridX,
+    gridY
+  ) {
 
     const x =
       Math.min(
-        gx * STEP,
+        gridX * STEP,
         CANVAS_WIDTH - 1
       );
 
+
     const y =
       Math.min(
-        gy * STEP,
+        gridY * STEP,
         CANVAS_HEIGHT - 1
       );
 
@@ -233,17 +240,19 @@ function detectPhotoArea() {
   }
 
 
-  // Cari titik transparan terdekat
-  // dari tengah canvas.
+  // ===================================================
+  // START SEARCH
+  // ===================================================
 
   const centerX =
     Math.floor(
-      gridWidth / 2
+      gridWidth * 0.42
     );
+
 
   const centerY =
     Math.floor(
-      gridHeight * 0.45
+      gridHeight * 0.42
     );
 
 
@@ -263,12 +272,17 @@ function detectPhotoArea() {
     radius++
   ) {
 
-    let found = false;
+    let found =
+      false;
 
 
     for (
-      let y = centerY - radius;
-      y <= centerY + radius;
+      let y =
+        centerY - radius;
+
+      y <=
+        centerY + radius;
+
       y++
     ) {
 
@@ -276,13 +290,19 @@ function detectPhotoArea() {
         y < 0 ||
         y >= gridHeight
       ) {
+
         continue;
+
       }
 
 
       for (
-        let x = centerX - radius;
-        x <= centerX + radius;
+        let x =
+          centerX - radius;
+
+        x <=
+          centerX + radius;
+
         x++
       ) {
 
@@ -290,7 +310,9 @@ function detectPhotoArea() {
           x < 0 ||
           x >= gridWidth
         ) {
+
           continue;
+
         }
 
 
@@ -307,7 +329,10 @@ function detectPhotoArea() {
 
 
         if (
-          alphaAtGrid(x, y)
+          alphaAtGrid(
+            x,
+            y
+          )
           <=
           TRANSPARENT_LIMIT
         ) {
@@ -338,13 +363,17 @@ function detectPhotoArea() {
   }
 
 
+  // ===================================================
+  // FALLBACK
+  // ===================================================
+
   if (
     startX === null ||
     startY === null
   ) {
 
     console.warn(
-      "Area transparan tidak ditemukan. Menggunakan posisi default."
+      "Area transparan tidak ditemukan. Menggunakan area default."
     );
 
     return;
@@ -352,9 +381,9 @@ function detectPhotoArea() {
   }
 
 
-  // Flood fill area transparan
-  // supaya transparency kecil di elemen lain
-  // nggak ikut terbaca.
+  // ===================================================
+  // FLOOD FILL
+  // ===================================================
 
   const visited =
     new Uint8Array(
@@ -386,10 +415,16 @@ function detectPhotoArea() {
   ) {
 
     const x =
-      queueX[queueIndex];
+      queueX[
+        queueIndex
+      ];
+
 
     const y =
-      queueY[queueIndex];
+      queueY[
+        queueIndex
+      ];
+
 
     queueIndex++;
 
@@ -400,30 +435,45 @@ function detectPhotoArea() {
       x >= gridWidth ||
       y >= gridHeight
     ) {
+
       continue;
+
     }
 
 
     const index =
-      y * gridWidth + x;
+      y *
+      gridWidth +
+      x;
 
 
     if (
-      visited[index]
+      visited[
+        index
+      ]
     ) {
+
       continue;
+
     }
 
 
-    visited[index] = 1;
+    visited[
+      index
+    ] = 1;
 
 
     if (
-      alphaAtGrid(x, y)
+      alphaAtGrid(
+        x,
+        y
+      )
       >
       TRANSPARENT_LIMIT
     ) {
+
       continue;
+
     }
 
 
@@ -433,17 +483,20 @@ function detectPhotoArea() {
         x
       );
 
+
     maxX =
       Math.max(
         maxX,
         x
       );
 
+
     minY =
       Math.min(
         minY,
         y
       );
+
 
     maxY =
       Math.max(
@@ -470,43 +523,64 @@ function detectPhotoArea() {
   }
 
 
-  // Ubah grid ke ukuran canvas asli.
+  // ===================================================
+  // GRID TO REAL CANVAS SIZE
+  // ===================================================
 
   let detectedX =
     minX * STEP;
 
+
   let detectedY =
     minY * STEP;
 
+
   let detectedWidth =
-    (maxX - minX + 1)
-    * STEP;
+    (
+      maxX -
+      minX +
+      1
+    )
+    *
+    STEP;
+
 
   let detectedHeight =
-    (maxY - minY + 1)
-    * STEP;
+    (
+      maxY -
+      minY +
+      1
+    )
+    *
+    STEP;
 
 
-  // Sedikit masuk ke dalam supaya
-  // pinggir foto tidak keluar dari frame.
+  // ===================================================
+  // INSET
+  // ===================================================
 
-  const INSET = 8;
+  const INSET = 6;
 
 
   detectedX +=
     INSET;
 
+
   detectedY +=
     INSET;
 
+
   detectedWidth -=
     INSET * 2;
+
 
   detectedHeight -=
     INSET * 2;
 
 
-  // Safety check
+  // ===================================================
+  // SAFETY CHECK
+  // ===================================================
 
   if (
     detectedWidth < 200 ||
@@ -548,11 +622,7 @@ function detectPhotoArea() {
 
 
 // =====================================================
-// SCALE FOTO
-//
-// PENTING:
-// Foto sekarang cover PHOTO AREA,
-// BUKAN seluruh canvas.
+// BASE PHOTO SCALE
 // =====================================================
 
 function getBasePhotoScale() {
@@ -576,7 +646,7 @@ function getBasePhotoScale() {
 
 
 // =====================================================
-// DRAW
+// DRAW CANVAS
 // =====================================================
 
 function draw() {
@@ -642,6 +712,7 @@ function draw() {
     ctx.imageSmoothingEnabled =
       true;
 
+
     ctx.imageSmoothingQuality =
       "high";
 
@@ -661,7 +732,7 @@ function draw() {
 
 
   // ===================================================
-  // TWIBBON
+  // TWIBBON OVERLAY
   // ===================================================
 
   if (
@@ -674,6 +745,7 @@ function draw() {
 
     ctx.imageSmoothingEnabled =
       true;
+
 
     ctx.imageSmoothingQuality =
       "high";
@@ -696,16 +768,20 @@ function draw() {
 
 
 // =====================================================
-// EDITOR ENABLE
+// ENABLE / DISABLE EDITOR
 // =====================================================
 
-function setEditorEnabled(enabled) {
+function setEditorEnabled(
+  enabled
+) {
 
   zoomRange.disabled =
     !enabled;
 
+
   resetBtn.disabled =
     !enabled;
+
 
   downloadBtn.disabled =
     !enabled;
@@ -714,7 +790,7 @@ function setEditorEnabled(enabled) {
 
 
 // =====================================================
-// RESET PHOTO
+// RESET POSITION
 // =====================================================
 
 function resetPosition() {
@@ -722,6 +798,7 @@ function resetPosition() {
   state.zoom = 1;
 
   state.x = 0;
+
   state.y = 0;
 
 
@@ -742,7 +819,9 @@ function resetPosition() {
 // LOAD PHOTO
 // =====================================================
 
-function loadPhotoFile(file) {
+function loadPhotoFile(
+  file
+) {
 
   if (!file) {
     return;
@@ -788,16 +867,6 @@ function loadPhotoFile(file) {
     photo = img;
 
 
-    // Hilangkan tulisan
-    // DROP A PHOTO
-
-    emptyState.hidden =
-      true;
-
-    emptyState.style.display =
-      "none";
-
-
     setEditorEnabled(
       true
     );
@@ -828,7 +897,7 @@ function loadPhotoFile(file) {
 
 
 // =====================================================
-// OVERLAY READY
+// OVERLAY LOAD
 // =====================================================
 
 overlay.addEventListener(
@@ -844,7 +913,7 @@ overlay.addEventListener(
 
 
 // =====================================================
-// PHOTO INPUT
+// FILE INPUT
 // =====================================================
 
 photoInput.addEventListener(
@@ -852,7 +921,8 @@ photoInput.addEventListener(
   (event) => {
 
     const file =
-      event.target.files?.[0];
+      event.target
+        .files?.[0];
 
 
     loadPhotoFile(
@@ -864,7 +934,7 @@ photoInput.addEventListener(
 
 
 // =====================================================
-// ZOOM
+// ZOOM UI
 // =====================================================
 
 function syncZoomUI() {
@@ -915,7 +985,7 @@ zoomRange.addEventListener(
 
 
 // =====================================================
-// RESET
+// RESET BUTTON
 // =====================================================
 
 resetBtn.addEventListener(
@@ -988,6 +1058,7 @@ function getPointerDistance() {
 
   const first =
     pointers[0];
+
 
   const second =
     pointers[1];
@@ -1069,7 +1140,9 @@ canvas.addEventListener(
     );
 
 
-    // PINCH
+    // =================================================
+    // PINCH START
+    // =================================================
 
     if (
       activePointers.size === 2
@@ -1097,7 +1170,9 @@ canvas.addEventListener(
     }
 
 
-    // DRAG
+    // =================================================
+    // DRAG START
+    // =================================================
 
     const point =
       pointerToCanvas(
@@ -1164,7 +1239,9 @@ canvas.addEventListener(
     }
 
 
-    // PINCH
+    // =================================================
+    // PINCH ZOOM
+    // =================================================
 
     if (
       activePointers.size >= 2 &&
@@ -1197,7 +1274,9 @@ canvas.addEventListener(
     }
 
 
-    // DRAG
+    // =================================================
+    // DRAG PHOTO
+    // =================================================
 
     if (
       !drag.active ||
@@ -1239,7 +1318,7 @@ canvas.addEventListener(
 
 
 // =====================================================
-// POINTER FINISH
+// POINTER END
 // =====================================================
 
 function finishPointer(
@@ -1296,7 +1375,7 @@ canvas.addEventListener(
 
 
 // =====================================================
-// DRAG & DROP FILE
+// DRAG AND DROP
 // =====================================================
 
 [
@@ -1352,7 +1431,8 @@ dropZone.addEventListener(
   (event) => {
 
     const file =
-      event.dataTransfer
+      event
+        .dataTransfer
         ?.files?.[0];
 
 
@@ -1365,7 +1445,7 @@ dropZone.addEventListener(
 
 
 // =====================================================
-// DOWNLOAD
+// DOWNLOAD PNG
 // =====================================================
 
 downloadBtn.addEventListener(
@@ -1416,6 +1496,7 @@ downloadBtn.addEventListener(
 
         link.click();
 
+
         link.remove();
 
 
@@ -1442,7 +1523,7 @@ downloadBtn.addEventListener(
 
 
 // =====================================================
-// CAPTION
+// CAPTION TEMPLATE
 // =====================================================
 
 function captionTemplate(
@@ -1617,9 +1698,11 @@ window.addEventListener(
 
 
 // =====================================================
-// INITIAL
+// INITIAL STATE
 // =====================================================
 
-setEditorEnabled(false);
+setEditorEnabled(
+  false
+);
 
 draw();
